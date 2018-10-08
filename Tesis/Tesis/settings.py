@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#CONFIGURACIÓN RECOMENTADADA
+
+#IMPORT_EXPORT_USE_TRANSACTIONS = True       #LINEA CREADA 04-10
 
 # Application definition
 
@@ -37,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'backend',
+    'import_export'                     #LINEA CREADA 04-10
+    
 ]
 
 MIDDLEWARE = [

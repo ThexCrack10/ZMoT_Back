@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+#from backend.admin import carga_masiva
+#from django.config.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('carga-masiva/', carga_masiva.urls),
+    #path(r'^rs',include ('backend.urls')),
+    #url(r'^rs',include ('backend.urls')),
 ]
