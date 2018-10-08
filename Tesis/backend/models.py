@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.db import models
 
 # Create your models here.
@@ -44,3 +45,8 @@ class Producto (models.Model):
 
 
 
+=======
+from django.db import models
+
+# Create your models here.
+>>>>>>> 92d78446747e93305d8b882835b425cbbd33c45c
