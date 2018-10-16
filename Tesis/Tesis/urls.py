@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-#from backend.admin import carga_masiva
-#from django.config.urls import url
+#API
+from django.conf import settings
+from rest_framework.authtoken import views 
+from django.conf.urls import url, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    #path('carga-masiva/', carga_masiva.urls),
-    #path(r'^rs',include ('backend.urls')),
-    #url(r'^rs',include ('backend.urls')),
+    url(r'api/v1/', include(('backend.urls', 'backend'), namespace='backend')),
+    path('admin/', admin.site.urls)
+]
+
+urlpatterns += [
+    url(r'^api/v1/auth', include('rest_framework.urls', namespace='rest_framework'))
 ]

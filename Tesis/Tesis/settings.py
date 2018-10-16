@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'backend',
-    'import_export'                     #LINEA CREADA 04-10
-    
+    'import_export',                     #LINEA CREADA 04-10
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -105,6 +105,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#REST FRAMEWORK CONFIG
+rest_framework = {
+    'PAGE_SIZE': 10 
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

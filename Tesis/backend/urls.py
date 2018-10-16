@@ -1,8 +1,6 @@
-#from django.contrib import admin
-#from django.urls import path
-#from django.config.urls import url
+from django.conf.urls import url
+from backend.views import *
 
-#urlpatterns = [
-#    path('admin/', admin.site.urls),
-#    path(r'^rs',include ('backend.urls')),
-#]
+urlpatterns = [
+    url(r'^backend/$', ProductoList.as_view(), name='backend')
+]

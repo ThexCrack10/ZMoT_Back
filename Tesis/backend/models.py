@@ -9,7 +9,6 @@ class RubroComercio (models.Model):
 
 class Categoria (models.Model): 
     descripcion = models.TextField(default='')
-    #flag = models.TextField(default='')
     def __str__ (self):
         return self.descripcion 
 
@@ -24,7 +23,7 @@ class UnidadDeMedida (models.Model):
         return self.nombre 
 
 class TipoCodigo (models.Model): 
-    nombre = models.TextField(default='')
+    nombre = models.CharField(max_length=128)
     def __str__ (self):
         return self.nombre 
 
@@ -34,13 +33,6 @@ class CaracteristicaProducto (models.Model):
     caracteristica = models.ForeignKey(Caracteristica, on_delete=models.CASCADE)
     def __str__ (self):
         return "Característica %s: %s de %s" % (self.caracteristica, self.valor, self.producto)
-    
-class CodigoProducto (models.Model):    
-    valor = models.TextField(default='')
-    producto = models.ForeignKey('Producto', on_delete=models.CASCADE)
-    codigo = models.ForeignKey(TipoCodigo, on_delete=models.CASCADE)
-    def __str__ (self):
-        return "Codigo %s: %s de %s" % (self.codigo, self.valor, self.producto)
     
 class MedidaProducto (models.Model): 
     valor = models.FloatField(default='')
@@ -56,27 +48,20 @@ class Comercio (models.Model):
         return self.nombre
 
 class Producto (models.Model): 
-    nombre = models.TextField(default='')
+    nombre = models.CharField(max_length=255)
     comentario = models.TextField(default='')
-    categorias = models.ManyToManyField(Categoria, blank=True)
-    comercios = models.ManyToManyField(Comercio, blank=True)
-    caracteristicas = models.ManyToManyField(Caracteristica, through='CaracteristicaProducto',blank=True)
-    codigos = models.ManyToManyField(TipoCodigo, through='CodigoProducto', blank=True)
-    medidas = models.ManyToManyField(UnidadDeMedida, through='MedidaProducto', blank=True)
+    #categorias = models.ManyToManyField(Categoria, blank=True)
+    #comercios = models.ManyToManyField(Comercio, blank=True)
+    #caracteristicas = models.ManyToManyField(Caracteristica, through='CaracteristicaProducto',blank=True)
+    #codigos = models.ManyToManyField(TipoCodigo, through='CodigoProducto', blank=True)
+    #medidas = models.ManyToManyField(UnidadDeMedida, through='MedidaProducto', blank=True)
     def __str__ (self):
         return self.nombre 
 
+class CodigoProducto (models.Model):    
+    valor = models.CharField(max_length=128)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    codigo = models.ForeignKey(TipoCodigo, on_delete=models.CASCADE)
+    def __str__ (self):
+        return "Codigo %s: %s de %s" % (self.codigo, self.valor, self.producto)
 
-
-
-#-----------------------------------------------------------------------------------------------------
-#PRUEBA CARGA MASIVA
-#-----------------------------------------------------------------------------------------------------
-
-#class Person(models.Model):
-#    name = models.CharField(max_length=30)
-#    email = models.EmailField(blank=True)
-#    birth_date = models.DateField()
-#    location = models.CharField(max_length=100, blank=True)
-
-#ARMAR CARGA MASIVA PARA NO TENGO 
